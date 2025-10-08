@@ -74,7 +74,7 @@ class DataTransformation:
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
 
-            logging.info("✅ Read train and test data completed successfully")
+            logging.info("Read train and test data completed successfully")
 
             preprocessing_obj = self.get_data_transformer_object()
 
@@ -87,7 +87,7 @@ class DataTransformation:
             input_feature_test_df = test_df.drop(columns=[target_column_name], axis=1)
             target_feature_test_df = test_df[target_column_name]
 
-            logging.info("✅ Applying preprocessing object on training and testing dataframes")
+            logging.info("Applying preprocessing object on training and testing dataframes")
 
             # ✅ Apply preprocessing
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
@@ -97,7 +97,7 @@ class DataTransformation:
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
 
-            logging.info("✅ Saving preprocessing object")
+            logging.info("Saving preprocessing object")
 
             # ✅ Save preprocessor
             save_object(
@@ -105,7 +105,7 @@ class DataTransformation:
                 obj=preprocessing_obj
             )
 
-            logging.info("✅ Data Transformation completed successfully")
+            logging.info("Data Transformation completed successfully")
 
             return (
                 train_arr,
